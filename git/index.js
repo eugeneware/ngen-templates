@@ -1,4 +1,5 @@
 var spawn = require('child_process').spawn;
+var now = new Date();
 
 exports.variables = {
     project: 'Project name: ',
@@ -18,5 +19,11 @@ exports.variables = {
             '--global',
             'user.email'
         ]).stdout.once('data', callback);
-    }
+    },
+	year: function(values, callback) {
+		callback(now.getFullYear());
+	},
+	date: function(values, callback) {
+		callback(now.toISOString().substr(0, 10));
+	}
 };
